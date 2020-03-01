@@ -1,0 +1,38 @@
+Installing InfluxDB
+
+These instructions were taken directly from influxdb's and grafana's website:
+
+sudo wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -source /etc/lsb-release
+sudo echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
+sudo apt-get update && sudo apt-get install influxdb
+sudo systemctl unmask influxdb.service
+sudo systemctl start influxdb
+
+Installing Grafana
+
+sudo apt-get install -y apt-transport-https
+sudo apt-get install -y software-properties-common wget
+wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+sudo add-apt-repository "deb https://packages.grafana.com/oss/deb stable main"
+sudo apt-get update
+sudo apt-get install grafana
+sudo systemctl daemon-reload
+sudo systemctl start grafana-server
+sudo systemctl status grafana-server
+sudo systemctl enable grafana-server.service
+
+you should now be able to access grafana using your browser on : http://<hostname or IP>:3000 use admin/admin as credentials.
+
+Now you need to add a data source, in grafana go to configurations then data sources.
+Click "Add data source" and choose "InfluxDB":
+URL : http://localhost:8086
+Database : <database name>
+Scroll to the bottom of the page and click "Save & Test"
+
+Next you need to create a new dashboard and configure the first Panel.
+Click on the plus icon in the left menu and then click Dashboard and finally click Add Query.
+Next to Query choose the Data Source you just created.
+Click on "select measurement" and choose the measurement you want to graph.
+Choose the field you want and then remove the "Group By" by clicking it and selecting the remove option.
+
+Dont forget to save the panel and dashboard using the save button with the diskette icon in the top right corner.
