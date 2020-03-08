@@ -24,6 +24,10 @@ If above doesn't work try
 
 > sudo pip3 install adafruit-circuitpython-bmp280
 
+> sudo apt-get install python-influxdb
+
+> python3 -m pip install influxdb
+
 Check the address the BMP280 sensor is using with the following command
 
 > i2cdetect -y 1
