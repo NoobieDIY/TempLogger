@@ -2,6 +2,10 @@
 
 This is a simple script that reads the temperature from the BMP280 sensor on a raspberry pi.
 
+Enable I2C interface
+> sudo raspi-config
+5 - Interfacing Options -> P5 I2C -> Enable
+
 Just follow the following instructions to set this up:
 > sudo apt-get update
 
