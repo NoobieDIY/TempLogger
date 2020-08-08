@@ -45,6 +45,12 @@ In my case the sensor was on i2c address 76 but the adafruit driver was configur
 Search for the following line toward the end of the file and change the "0x77" to "0x76"
   def __init__(self, i2c, address=0x77):
 
+Install git cli commands
+> apt-get install git
+
+pull scripts
+>git pull https://github.com/NoobieDIY/TempLogger
+
 Add this to crontab
 > @reboot sudo /root/TempLogger/RunTempLogger.sh
 
